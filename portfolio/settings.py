@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # My apps
-    "myportapp"
+    "myportapp",
 ]
 
 MIDDLEWARE = [
@@ -76,13 +77,13 @@ WSGI_APPLICATION = "portfolio.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'myportfolio',
-        'USER': 'alshafarazhg',
-        'PASSWORD': 'Wow17zam!',
-        'HOST':'localhost',
-        'PORT':'3306',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "myportfolio",
+        "USER": "alshafarazhg",
+        "PASSWORD": "Wow17zam!",
+        "HOST": "localhost",
+        "PORT": "3306",
     }
 }
 
@@ -121,7 +122,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+MEDIA_URL = "/assets/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "myportapp/assets/images/")
+STATIC_ROOT = os.path.join(STATIC_URL, "myportapp/assets/static/")
+
+STATICFILES_DIRS = [BASE_DIR / "myportapp/assets/static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
