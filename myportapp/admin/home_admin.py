@@ -1,6 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from models.settings_config import SiteConfiguration
+from myportapp.models.home import Home
+
+
 # Home
-admin.site.register(Home)
+@admin.register(Home)
+class HomeAdmin(admin.ModelAdmin):
+    list_display = ("name", "greetings_1", "greetings_2", "updated")
